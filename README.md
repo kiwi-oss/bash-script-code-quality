@@ -107,6 +107,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – ANSI-C quoting](https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html)
 
 
+### Call original command instead of mock
+
+* [ShellSpec – Support commands, Execute the actual command within a mock function](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#execute-the-actual-command-within-a-mock-function)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 

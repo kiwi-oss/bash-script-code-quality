@@ -18,7 +18,11 @@ Describe 'Workload declarations validation'
 			return 0
 		}
 		cat() {
-			printf '%s\n' 'dummy workload'
+			if [[ "$1" == 'generated_workloads' ]]; then
+				printf '%s\n' 'dummy workload'
+			else
+				@cat
+			fi
 		}
 
 		When run source validate_workload_declarations.sh
@@ -49,7 +53,11 @@ Describe 'Workload declarations validation'
 				return 0
 			}
 			cat() {
-				printf '%s\n' 'dummy workload'
+				if [[ "$1" == 'generated_workloads' ]]; then
+					printf '%s\n' 'dummy workload'
+				else
+					@cat
+				fi
 			}
 
 			When run source validate_workload_declarations.sh
@@ -69,7 +77,11 @@ Describe 'Workload declarations validation'
 			return 0
 		}
 		cat() {
-			printf '%s\n' 'Unpatched workload <patched>'
+			if [[ "$1" == 'generated_workloads' ]]; then
+				printf '%s\n' 'Unpatched workload <patched>'
+			else
+				@cat
+			fi
 		}
 
 		When run source validate_workload_declarations.sh
@@ -88,7 +100,11 @@ Describe 'Workload declarations validation'
 			return 0
 		}
 		cat() {
-			printf '%s\n' 'dummy workload'
+			if [[ "$1" == 'generated_workloads' ]]; then
+				printf '%s\n' 'dummy workload'
+			else
+				@cat
+			fi
 		}
 
 		When run source validate_workload_declarations.sh
@@ -135,7 +151,11 @@ Describe 'Workload declarations validation'
 			return 0
 		}
 		cat() {
-			printf '%s\n' 'dummy workload'
+			if [[ "$1" == 'generated_workloads' ]]; then
+				printf '%s\n' 'dummy workload'
+			else
+				@cat
+			fi
 		}
 
 		When run source validate_workload_declarations.sh
