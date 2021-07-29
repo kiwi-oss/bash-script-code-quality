@@ -42,6 +42,13 @@ another, so tests could be run at the various stages.
 
 * [ShellSpec – Project directory](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#project-directory)
 * [ShellSpec – runs specfile using `/bin/sh` by default](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#runs-specfile-using-binsh-by-default)
+* [ShellSpec – How to use ShellSpec with Docker, Run simple with helper script and extra hooks](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/docs/docker.md#2-run-simple-with-helper-script-and-extra-hooks)
+
+
+### Unit testing single-file scripts
+
+* [ShellSpec – Using `run source`](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#using-run-source)
+* [References](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/docs/references.md)
 
 
 [ALE]:
