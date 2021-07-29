@@ -6,7 +6,7 @@ Describe 'Workload declarations validation'
 		local text=${pass_message_count_is:?}
 		local expected_count="$1"
 
-		(( $(grep --ignore-case --count 'pass' <<< "$text") == expected_count ))
+		(( $(@grep --ignore-case --count 'pass' <<< "$text") == expected_count ))
 	}
 
 	It 'outputs success messages for all steps when they pass'
@@ -17,12 +17,8 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		cat() {
-			if [[ "$1" == 'generated_workloads' ]]; then
-				printf '%s\n' 'dummy workload'
-			else
-				@cat
-			fi
+		grep() {
+			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -52,12 +48,8 @@ Describe 'Workload declarations validation'
 				printf '%s\n' 'Output from Kubeval tool'
 				return 0
 			}
-			cat() {
-				if [[ "$1" == 'generated_workloads' ]]; then
-					printf '%s\n' 'dummy workload'
-				else
-					@cat
-				fi
+			grep() {
+				printf '%d\n' 0
 			}
 
 			When run source validate_workload_declarations.sh
@@ -76,12 +68,8 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		cat() {
-			if [[ "$1" == 'generated_workloads' ]]; then
-				printf '%s\n' 'Unpatched workload <patched>'
-			else
-				@cat
-			fi
+		grep() {
+			printf '%d\n' 1
 		}
 
 		When run source validate_workload_declarations.sh
@@ -99,12 +87,8 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		cat() {
-			if [[ "$1" == 'generated_workloads' ]]; then
-				printf '%s\n' 'dummy workload'
-			else
-				@cat
-			fi
+		grep() {
+			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -139,7 +123,7 @@ Describe 'Workload declarations validation'
 			====================
 		EOF
 
-		grep --perl-regexp --null-data --quiet "${expected_header//$'\n'/'\n'}" <<< "$text"
+		@grep --perl-regexp --null-data --quiet "${expected_header//$'\n'/'\n'}" <<< "$text"
 	}
 
 	It 'outputs headers for all clusters'
@@ -150,12 +134,8 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		cat() {
-			if [[ "$1" == 'generated_workloads' ]]; then
-				printf '%s\n' 'dummy workload'
-			else
-				@cat
-			fi
+		grep() {
+			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -188,12 +168,8 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		cat() {
-			if [[ "$1" == 'generated_workloads' ]]; then
-				printf '%s\n' 'dummy workload'
-			else
-				@cat
-			fi
+		grep() {
+			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh

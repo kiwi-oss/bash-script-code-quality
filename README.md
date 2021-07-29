@@ -142,6 +142,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Special parameters, `!`](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
 
 
+### Useless use of `cat`
+
+* [Wikipedia – Cat, Useless use of cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29#Useless_use_of_cat)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 

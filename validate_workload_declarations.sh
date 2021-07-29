@@ -40,12 +40,12 @@ validate_workload_declarations_for() {
 	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - workloads generated.'
 
 	printf '\n%s\n' '... kubeval'
-	run_in_container "cat generated_workloads | kubeval --ignore-missing-schemas --exit-on-error" \
+	run_in_container "kubeval --ignore-missing-schemas --exit-on-error < generated_workloads" \
 		|| exit_with_message $'\e[31;1m❌ Error: validating k8s schemas! \e[0m'
 	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - k8s schemas validated.'
 
 	printf '\n%s\n' '... conftest'
-	run_in_container "cat generated_workloads | conftest test -" \
+	run_in_container "conftest test generated_workloads" \
 		|| exit_with_message $'\e[31;1m❌ Error: validating policies! \e[0m'
 	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - policies fullfileled.'
 
@@ -63,7 +63,7 @@ run_in_container() {
 }
 
 patch_markers_left() {
-	(( $(cat generated_workloads | grep "<patched>" | wc -l) > 0 ))
+	(( $(grep --count '<patched>' generated_workloads) > 0 ))
 }
 
 main "$@"
