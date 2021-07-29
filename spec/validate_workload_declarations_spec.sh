@@ -180,4 +180,22 @@ Describe 'Workload declarations validation'
 		The output should be present
 		The file ./generated_workloads* should not be exist
 	End
+
+	It 'exits with corresponding message if temporary file could not be created'
+		find() {
+			printf '%s\0' 'some_cluster'
+		}
+		mktemp() {
+			printf '%s\n' 'temporary_file'
+			return 42
+		}
+		docker() {
+			return 1
+		}
+
+		When run source validate_workload_declarations.sh
+		The status should equal 42
+		The output should include 'Could not create temporary file'
+		The lines of stdout should equal 4
+	End
 End
