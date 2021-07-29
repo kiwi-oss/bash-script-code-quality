@@ -147,6 +147,11 @@ another, so tests could be run at the various stages.
 * [Wikipedia – Cat, Useless use of cat](https://en.wikipedia.org/wiki/Cat_%28Unix%29#Useless_use_of_cat)
 
 
+### Execute command upon script termination
+
+* [Bash reference manual – Bourne Shell builtins, `trap`](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
