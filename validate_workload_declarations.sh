@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 main() {
-    CLUSTERS=$(find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases') \
+    CLUSTERS=$(find ./clusters -mindepth 2 -maxdepth 2 -type d -not -name 'bases') \
         || exit_with_message 'Error during search for cluster folders.'
     echo "${CLUSTERS}"
 
