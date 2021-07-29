@@ -112,6 +112,17 @@ another, so tests could be run at the various stages.
 * [ShellSpec – Support commands, Execute the actual command within a mock function](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#execute-the-actual-command-within-a-mock-function)
 
 
+### Prefer `[[ ]]` test over `[ ]` in Bash 
+
+* [Bash FAQ – What is the difference between `test`, `[` and `[[` ?](https://mywiki.wooledge.org/BashFAQ/031)
+* [Bash Guide – Practices, Choose your shell](https://mywiki.wooledge.org/BashGuide/Practices#Choose_Your_Shell)
+
+
+### Define default value for variable
+
+* [Bash reference manual – Shell parameter expansion, `${parameter:-word}`](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
