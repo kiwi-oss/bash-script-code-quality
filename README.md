@@ -123,6 +123,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Shell parameter expansion, `${parameter:-word}`](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 
 
+### Problems with looping over `find` output
+
+[Bash Pitfalls – `for f in $(ls *.mp3)`](https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 

@@ -179,4 +179,30 @@ Describe 'Workload declarations validation'
 		The output should include 'Error during search'
 		The lines of stdout should equal 2
 	End
+
+	It 'validates clusters with spaces and newline in name correctly'
+		find() {
+			printf '%s\n' $'first\ncluster' 'my second cluster'
+		}
+		docker() {
+			printf '%s\n' 'Output from Kubeval tool'
+			return 0
+		}
+		cat() {
+			if [[ "$1" == 'generated_workloads' ]]; then
+				printf '%s\n' 'dummy workload'
+			else
+				@cat
+			fi
+		}
+
+		When run source validate_workload_declarations.sh
+		The status should be success
+		The line 1 should equal 'first'
+		The line 2 should equal 'cluster'
+		The line 3 should equal 'my second cluster'
+		The output should satisfy contains_header_for_cluster $'first\ncluster'
+		The output should satisfy contains_header_for_cluster 'my second cluster'
+		The output should satisfy pass_message_count_is $(( 2 * 4 ))
+	End
 End
