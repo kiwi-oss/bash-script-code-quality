@@ -80,6 +80,12 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Conditional constructs, `((…))`](https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html)
 
 
+### Match function arguments
+
+* [Bash reference manual – Special parameters, `*`](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
+* [Bash reference manual – Pattern matching, `*`](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
