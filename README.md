@@ -38,6 +38,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Bash builtin commands, `local`](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
 
 
+### Initialise and run ShellSpec
+
+* [ShellSpec – Project directory](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#project-directory)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
