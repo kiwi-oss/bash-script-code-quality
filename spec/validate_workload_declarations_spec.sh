@@ -95,4 +95,20 @@ Describe 'Workload declarations validation'
         The status should be success
         The output should satisfy pass_message_count_is $(( 3 * 4 ))
     End
+
+    It 'outputs the found cluster folders first'
+        find() {
+            printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+        }
+        docker() {
+            return 1
+        }
+
+        When run source validate_workload_declarations.sh
+        The status should be failure
+        The line 1 should equal 'first_cluster'
+        The line 2 should equal 'second_cluster'
+        The line 3 should equal 'third_cluster'
+        The line 4 should equal ''
+    End
 End
