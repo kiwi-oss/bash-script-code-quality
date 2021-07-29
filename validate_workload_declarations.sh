@@ -59,7 +59,12 @@ validate_workload_declarations_for() {
 run_in_container() {
 	local command="$1"
 
-	docker run -it --rm  -v "$(pwd)":/workdir -w /workdir deck15/kubeval-tools /bin/sh -c "$command"
+	docker run \
+		--interactive --tty --rm \
+		--volume "$(pwd)":/workdir \
+		--workdir /workdir \
+		deck15/kubeval-tools \
+		/bin/sh -c "$command"
 }
 
 patch_markers_left() {
