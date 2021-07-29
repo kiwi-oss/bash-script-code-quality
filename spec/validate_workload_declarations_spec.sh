@@ -111,4 +111,37 @@ Describe 'Workload declarations validation'
 		The line 3 should equal 'third_cluster'
 		The line 4 should equal ''
 	End
+
+	contains_header_for_cluster() {
+		local text=${contains_header_for_cluster:?}
+		local cluster_name="$1"
+
+		local expected_header
+		read -r -d '' expected_header <<-EOF
+			====================
+			check $cluster_name
+			====================
+		EOF
+
+		grep --perl-regexp --null-data --quiet "${expected_header//$'\n'/'\n'}" <<< "$text"
+	}
+
+	It 'outputs headers for all clusters'
+		find() {
+			printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+		}
+		docker() {
+			printf '%s\n' 'Output from Kubeval tool'
+			return 0
+		}
+		cat() {
+			printf '%s\n' 'dummy workload'
+		}
+
+		When run source validate_workload_declarations.sh
+		The status should be success
+		The output should satisfy contains_header_for_cluster 'first_cluster'
+		The output should satisfy contains_header_for_cluster 'second_cluster'
+		The output should satisfy contains_header_for_cluster 'third_cluster'
+	End
 End

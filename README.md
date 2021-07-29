@@ -98,6 +98,15 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Arithmetic expansion](https://www.gnu.org/software/bash/manual/html_node/Arithmetic-Expansion.html)
 
 
+### Define multiline string variables
+
+* [Stack Overflow – How to assign a heredoc value to a variable in Bash?](https://stackoverflow.com/q/1167746)
+
+* [Bash reference manual – Here documents](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Documents)
+* [Bash reference manual – Shell parameter expansion, `${parameter/pattern/string}`](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
+* [Bash reference manual – ANSI-C quoting](https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
