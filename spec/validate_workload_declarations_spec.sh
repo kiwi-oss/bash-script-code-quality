@@ -7,7 +7,9 @@ Describe 'Workload declarations validation'
         docker() {
             return 0
         }
-
+        cat() {
+            printf '%s\n' 'dummy workload'
+        }
 
         When run source validate_workload_declarations.sh
         The status should be success
