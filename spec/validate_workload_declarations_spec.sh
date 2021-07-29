@@ -76,7 +76,7 @@ Describe 'Workload declarations validation'
 		When run source validate_workload_declarations.sh
 		The status should be failure
 		The output should match pattern $'*\e[31;1m*Error*\e[0m*'
-		The output should include 'found unpatched places'
+		The output should include 'Found missing patches'
 		The output should satisfy pass_message_count_is 3
 	End
 

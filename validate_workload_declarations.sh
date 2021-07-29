@@ -16,14 +16,6 @@ find_cluster_folders() {
 	find ./clusters -mindepth 2 -maxdepth 2 -type d -not -name 'bases' -print0
 }
 
-exit_with_message() {
-	local exit_status="${2:-$?}"
-	local message="$1"
-
-	printf '%s\n' "$message" 'Aborting execution.'
-	exit "$exit_status"
-}
-
 validate_workload_declarations_for() {
 	local cluster="$1"
 
@@ -36,24 +28,24 @@ validate_workload_declarations_for() {
 
 	printf '\n%s\n' '... kustomize'
 	run_in_container "kustomize build ./${cluster} > generated_workloads" \
-		|| exit_with_message $'\e[31;1m❌ Error: generating workloads! \e[0m'
-	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - workloads generated.'
+		|| exit_with_message "$(red '❌ Error while generating workloads')"
+	printf '%s\n' "$(green '✔️PASS') - Workloads generated."
 
 	printf '\n%s\n' '... kubeval'
 	run_in_container "kubeval --ignore-missing-schemas --exit-on-error < generated_workloads" \
-		|| exit_with_message $'\e[31;1m❌ Error: validating k8s schemas! \e[0m'
-	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - k8s schemas validated.'
+		|| exit_with_message "$(red '❌ Error while validating k8s schemas')"
+	printf '%s\n' "$(green '✔️PASS') - K8s schemas validated."
 
 	printf '\n%s\n' '... conftest'
 	run_in_container "conftest test generated_workloads" \
-		|| exit_with_message $'\e[31;1m❌ Error: validating policies! \e[0m'
-	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - policies fullfileled.'
+		|| exit_with_message "$(red '❌ Error while validating policies')"
+	printf '%s\n' "$(green '✔️PASS') - Policies validated."
 
-	printf '\n%s\n' '... check unpatched values'
+	printf '\n%s\n' '... search for unpatched values'
 	if patch_markers_left; then
-		exit_with_message $'\e[31;1m❌ Error: found unpatched places! \e[0m' 1
+		exit_with_message "$(red '❌ Error: Found missing patches')" 1
 	fi
-	printf '%s\n' $'\e[32;1m✔️PASS\e[0m - no unpatched places found.'
+	printf '%s\n' "$(green '✔️PASS') - No unpatched values found."
 }
 
 run_in_container() {
@@ -65,6 +57,30 @@ run_in_container() {
 		--workdir /workdir \
 		deck15/kubeval-tools \
 		/bin/sh -c "$command"
+}
+
+exit_with_message() {
+	local exit_status="${2:-$?}"
+	local message="$1"
+
+	printf '%s\n' "$message" 'Aborting execution.'
+	exit "$exit_status"
+}
+
+red() {
+	local last_exit_status="$?"
+	local text="$1"
+
+	printf '\e[31;1m%s\e[0m' "$text"
+	return "$last_exit_status"
+}
+
+green() {
+	local last_exit_status="$?"
+	local text="$1"
+
+	printf '\e[32;1m%s\e[0m' "$text"
+	return "$last_exit_status"
 }
 
 patch_markers_left() {
