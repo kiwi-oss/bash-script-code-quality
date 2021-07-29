@@ -4,6 +4,9 @@ Describe 'Workload declarations validation'
         find() {
             echo 'some_cluster'
         }
+        docker() {
+            return 0
+        }
 
         When run source validate_workload_declarations.sh
         The status should be success
