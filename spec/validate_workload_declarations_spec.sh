@@ -164,4 +164,19 @@ Describe 'Workload declarations validation'
 		The output should satisfy contains_header_for_cluster 'second_cluster'
 		The output should satisfy contains_header_for_cluster 'third_cluster'
 	End
+
+	It 'exits with corresponding message for failing find command'
+		find() {
+			printf '%s\n' 'some_cluster'
+			return 13
+		}
+		docker() {
+			return 1
+		}
+
+		When run source validate_workload_declarations.sh
+		The status should equal 13
+		The output should include 'Error during search'
+		The lines of stdout should equal 2
+	End
 End
