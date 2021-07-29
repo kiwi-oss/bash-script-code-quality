@@ -73,6 +73,13 @@ another, so tests could be run at the various stages.
 * [ShellCheck wiki – Directive, `shell`](https://github.com/koalaman/shellcheck/wiki/Directive#shell)
 
 
+### Custom assertion counting occurrences of a string
+
+* [Bash reference manual – Here strings](https://www.gnu.org/software/bash/manual/html_node/Redirections.html#Here-Strings)
+* [Bash reference manual – Shell parameter expansion, `${parameter:?word}`](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
+* [Bash reference manual – Conditional constructs, `((…))`](https://www.gnu.org/software/bash/manual/html_node/Conditional-Constructs.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
