@@ -86,6 +86,13 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Pattern matching, `*`](https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html)
 
 
+### Command substitution
+
+* [Bash FAQ – Why is $(...) preferred over `...` (backticks)?](https://mywiki.wooledge.org/BashFAQ/082)
+
+* [Bash reference manual – Command substitution](https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 

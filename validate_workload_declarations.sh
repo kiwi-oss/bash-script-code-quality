@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 main() {
-    CLUSTERS=`find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases'` \
+    CLUSTERS=$(find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases') \
         || exit_with_message 'Error during search for cluster folders.'
-    echo ${CLUSTERS}
+    echo "${CLUSTERS}"
 
     for cluster in ${CLUSTERS}; do
         echo
         echo ==================== ;
-        echo check $cluster ;
+        echo check "$cluster" ;
         echo ==================== ;
 
         echo
@@ -50,7 +50,7 @@ exit_with_message() {
 run_in_container() {
     local command="$1"
 
-    docker run -it --rm  -v $(pwd):/workdir -w /workdir deck15/kubeval-tools /bin/sh -c "$command"
+    docker run -it --rm  -v "$(pwd)":/workdir -w /workdir deck15/kubeval-tools /bin/sh -c "$command"
 }
 
 
