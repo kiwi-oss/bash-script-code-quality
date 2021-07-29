@@ -6,7 +6,8 @@ Describe 'Workload declarations validation'
 		local text=${pass_message_count_is:?}
 		local expected_count="$1"
 
-		(( $(@grep --ignore-case --count 'pass' <<< "$text") == expected_count ))
+		(( $(@grep --ignore-case --count $'\e\[32;1m.*pass\e\[0m' <<< "$text") \
+			== expected_count ))
 	}
 
 	It 'outputs success messages for all steps when they pass'
@@ -54,7 +55,7 @@ Describe 'Workload declarations validation'
 
 			When run source validate_workload_declarations.sh
 			The status should be failure
-			The output should include 'Error'
+			The output should match pattern $'*\e[31;1m*Error*\e[0m*'
 			The output should include "$error_message"
 			The output should satisfy pass_message_count_is "$pass_message_count"
 		End
@@ -74,7 +75,7 @@ Describe 'Workload declarations validation'
 
 		When run source validate_workload_declarations.sh
 		The status should be failure
-		The output should include 'Error'
+		The output should match pattern $'*\e[31;1m*Error*\e[0m*'
 		The output should include 'found unpatched places'
 		The output should satisfy pass_message_count_is 3
 	End
@@ -123,7 +124,8 @@ Describe 'Workload declarations validation'
 			====================
 		EOF
 
-		@grep --perl-regexp --null-data --quiet "${expected_header//$'\n'/'\n'}" <<< "$text"
+		@grep --perl-regexp --null-data --quiet \
+			"${expected_header//$'\n'/'\n'}" <<< "$text"
 	}
 
 	It 'outputs headers for all clusters'
