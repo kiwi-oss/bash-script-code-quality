@@ -183,4 +183,22 @@ Describe 'Workload declarations validation'
 		The output should satisfy contains_header_for_cluster 'my second cluster'
 		The output should satisfy pass_message_count_is $(( 2 * 4 ))
 	End
+
+	It 'does not leave generated files in the current folder'
+		find() {
+			printf '%s\0' 'first_cluster' 'second_cluster' 'third_cluster'
+		}
+		docker() {
+			printf '%s\n' 'Output from Kubeval tool'
+			return 0
+		}
+		grep() {
+			printf '%d\n' 0
+		}
+
+		When run source validate_workload_declarations.sh
+		The status should be success
+		The output should be present
+		The file ./generated_workloads* should not be exist
+	End
 End
