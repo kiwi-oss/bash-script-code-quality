@@ -24,6 +24,20 @@ The [Flog] plugin for Vim has been used to check out the commits one after
 another, so tests could be run at the various stages.
 
 
+## References
+
+### Calling Docker for separate commands
+
+* [Stack Overflow – What is the runtime performance cost of a Docker container?](https://stackoverflow.com/a/26149994)
+
+
+### Variables
+
+* [Unix & Linux Stack Exchange – Are there naming conventions for variables in shell scripts?](https://unix.stackexchange.com/a/42849)
+
+* [Bash reference manual – Bash builtin commands, `local`](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
