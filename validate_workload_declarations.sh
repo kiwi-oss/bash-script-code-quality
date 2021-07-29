@@ -3,34 +3,32 @@
 main() {
 	CLUSTERS=$(find ./clusters -mindepth 2 -maxdepth 2 -type d -not -name 'bases') \
 		|| exit_with_message 'Error during search for cluster folders.'
-	echo "${CLUSTERS}"
+	printf '%s\n' "${CLUSTERS}"
 
 	for cluster in ${CLUSTERS}; do
-		echo
-		echo ====================
-		echo check "$cluster"
-		echo ====================
+		cat <<-EOF
 
-		echo
-		echo ... kustomize
+			====================
+			check $cluster
+			====================
+		EOF
+
+		printf '\n%s\n' '... kustomize'
 		run_in_container "kustomize build ./${cluster} > generated_workloads"
 		[ $? -ne 0 ] && echo -e "\e[31;1m❌ Error: generating workloads! \e[0m" && exit 1
 		echo -e "\e[32;1m✔️PASS\e[0m - workloads generated."
 
-		echo
-		echo ... kubeval
+		printf '\n%s\n' '... kubeval'
 		run_in_container "cat generated_workloads | kubeval --ignore-missing-schemas --exit-on-error"
 		[ $? -ne 0 ] && echo -e "\e[31;1m❌ Error: validating k8s schemas! \e[0m" && exit 1
 		echo -e "\e[32;1m✔️PASS\e[0m - k8s schemas validated."
 
-		echo
-		echo ... conftest
+		printf '\n%s\n' '... conftest'
 		run_in_container "cat generated_workloads | conftest test -"
 		[ $? -ne 0 ] && echo -e "\e[31;1m❌ Error: validating policies! \e[0m" && exit 1
 		echo -e "\e[32;1m✔️PASS\e[0m - policies fullfileled."
 
-		echo
-		echo ... check unpatched values
+		printf '\n%s\n' '... check unpatched values'
 		if [ $(cat generated_workloads | grep "<patched>" | wc -l) -ne 0 ]; then
 			echo -e "\e[31;1m❌ Error: found unpatched places! \e[0m"
 			exit 1
