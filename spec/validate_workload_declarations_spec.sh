@@ -11,7 +11,7 @@ Describe 'Workload declarations validation'
 
 	It 'outputs success messages for all steps when they pass'
 		find() {
-			printf '%s\n' 'some_cluster'
+			printf '%s\0' 'some_cluster'
 		}
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
@@ -43,7 +43,7 @@ Describe 'Workload declarations validation'
 			pass_message_count="$3"
 
 			find() {
-				printf '%s\n' 'some_cluster'
+				printf '%s\0' 'some_cluster'
 			}
 			docker() {
 				if [[ "$*" == *"$validation_command"* ]]; then
@@ -70,7 +70,7 @@ Describe 'Workload declarations validation'
 
 	It 'exits with corresponding message for failing patch validation'
 		find() {
-			printf '%s\n' 'some_cluster'
+			printf '%s\0' 'some_cluster'
 		}
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
@@ -93,7 +93,7 @@ Describe 'Workload declarations validation'
 
 	It 'outputs success messages for multiple clusters'
 		find() {
-			printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+			printf '%s\0' 'first_cluster' 'second_cluster' 'third_cluster'
 		}
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
@@ -114,7 +114,7 @@ Describe 'Workload declarations validation'
 
 	It 'outputs the found cluster folders first'
 		find() {
-			printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+			printf '%s\0' 'first_cluster' 'second_cluster' 'third_cluster'
 		}
 		docker() {
 			return 1
@@ -144,7 +144,7 @@ Describe 'Workload declarations validation'
 
 	It 'outputs headers for all clusters'
 		find() {
-			printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+			printf '%s\0' 'first_cluster' 'second_cluster' 'third_cluster'
 		}
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
@@ -167,7 +167,7 @@ Describe 'Workload declarations validation'
 
 	It 'exits with corresponding message for failing find command'
 		find() {
-			printf '%s\n' 'some_cluster'
+			printf '%s\0' 'some_cluster'
 			return 13
 		}
 		docker() {
@@ -182,7 +182,7 @@ Describe 'Workload declarations validation'
 
 	It 'validates clusters with spaces and newline in name correctly'
 		find() {
-			printf '%s\n' $'first\ncluster' 'my second cluster'
+			printf '%s\0' $'first\ncluster' 'my second cluster'
 		}
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'

@@ -128,6 +128,20 @@ another, so tests could be run at the various stages.
 [Bash Pitfalls – `for f in $(ls *.mp3)`](https://mywiki.wooledge.org/BashPitfalls#for_f_in_.24.28ls_.2A.mp3.29)
 
 
+### Read `find` output into array
+
+* [Bash FAQ – How can I find and safely handle file names containing newlines, spaces or both?](https://mywiki.wooledge.org/BashFAQ/020)
+* [Stack Overflow – How can I store the “find” command results as an array in Bash](https://stackoverflow.com/a/54561526)
+* [Unix & Linux Stack Exchange – Bash: pipe 'find' output into 'readarray'](https://unix.stackexchange.com/questions/263883/bash-pipe-find-output-into-readarray#comment1222591_651445)
+
+* [Bash reference manual – Arrays](https://www.gnu.org/software/bash/manual/html_node/Arrays.html)
+* [Bash reference manual – Grouping commands, `{}`](https://www.gnu.org/software/bash/manual/html_node/Command-Grouping.html)
+* [Bash reference manual – Bash builtin commands, `readarray`](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
+* [Bash reference manual – Process substitution](https://www.gnu.org/software/bash/manual/html_node/Process-Substitution.html)
+* [Bash reference manual – Job control builtins, `wait`](https://www.gnu.org/software/bash/manual/html_node/Job-Control-Builtins.html)
+* [Bash reference manual – Special parameters, `!`](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
