@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-# Script for configuration check like Jenkinsfile
 
 docker run -it --rm  -v $(pwd):/workdir -w /workdir deck15/kubeval-tools /bin/sh -c  '
 CLUSTERS=`find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases'`
