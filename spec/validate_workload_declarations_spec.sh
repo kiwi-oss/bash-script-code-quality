@@ -59,4 +59,23 @@ Describe 'Workload declarations validation'
             The output should satisfy pass_message_count_is "$pass_message_count"
         End
     End
+
+    It 'exits with corresponding message for failing patch validation'
+        find() {
+            printf '%s\n' 'some_cluster'
+        }
+        docker() {
+            printf '%s\n' 'Output from Kubeval tool'
+            return 0
+        }
+        cat() {
+            printf '%s\n' 'Unpatched workload <patched>'
+        }
+
+        When run source validate_workload_declarations.sh
+        The status should be failure
+        The output should include 'Error'
+        The output should include 'found unpatched places'
+        The output should satisfy pass_message_count_is 3
+    End
 End
