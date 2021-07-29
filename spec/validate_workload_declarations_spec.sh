@@ -6,7 +6,7 @@ Describe 'Workload declarations validation'
 		local text=${pass_message_count_is:?}
 		local expected_count="$1"
 
-		(( $(@grep --ignore-case --count $'\e\[32;1m.*pass\e\[0m' <<< "$text") \
+		(( $(grep --ignore-case --count $'\e\[32;1m.*pass\e\[0m' <<< "$text") \
 			== expected_count ))
 	}
 
@@ -17,9 +17,6 @@ Describe 'Workload declarations validation'
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
-		}
-		grep() {
-			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -49,9 +46,6 @@ Describe 'Workload declarations validation'
 				printf '%s\n' 'Output from Kubeval tool'
 				return 0
 			}
-			grep() {
-				printf '%d\n' 0
-			}
 
 			When run source validate_workload_declarations.sh
 			The status should be failure
@@ -66,11 +60,8 @@ Describe 'Workload declarations validation'
 			printf '%s\0' 'some_cluster'
 		}
 		docker() {
-			printf '%s\n' 'Output from Kubeval tool'
+			printf '%s\n' 'Contains remaining <patched> value'
 			return 0
-		}
-		grep() {
-			printf '%d\n' 1
 		}
 
 		When run source validate_workload_declarations.sh
@@ -87,9 +78,6 @@ Describe 'Workload declarations validation'
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
-		}
-		grep() {
-			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -124,7 +112,7 @@ Describe 'Workload declarations validation'
 			====================
 		EOF
 
-		@grep --perl-regexp --null-data --quiet \
+		grep --perl-regexp --null-data --quiet \
 			"${expected_header//$'\n'/'\n'}" <<< "$text"
 	}
 
@@ -135,9 +123,6 @@ Describe 'Workload declarations validation'
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
-		}
-		grep() {
-			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
@@ -170,9 +155,6 @@ Describe 'Workload declarations validation'
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
 		}
-		grep() {
-			printf '%d\n' 0
-		}
 
 		When run source validate_workload_declarations.sh
 		The status should be success
@@ -191,9 +173,6 @@ Describe 'Workload declarations validation'
 		docker() {
 			printf '%s\n' 'Output from Kubeval tool'
 			return 0
-		}
-		grep() {
-			printf '%d\n' 0
 		}
 
 		When run source validate_workload_declarations.sh
