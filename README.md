@@ -93,6 +93,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Command substitution](https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html)
 
 
+### Working with calculation results
+
+* [Bash reference manual – Arithmetic expansion](https://www.gnu.org/software/bash/manual/html_node/Arithmetic-Expansion.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 

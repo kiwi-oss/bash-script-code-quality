@@ -78,4 +78,21 @@ Describe 'Workload declarations validation'
         The output should include 'found unpatched places'
         The output should satisfy pass_message_count_is 3
     End
+
+    It 'outputs success messages for multiple clusters'
+        find() {
+            printf '%s\n' 'first_cluster' 'second_cluster' 'third_cluster'
+        }
+        docker() {
+            printf '%s\n' 'Output from Kubeval tool'
+            return 0
+        }
+        cat() {
+            printf '%s\n' 'dummy workload'
+        }
+
+        When run source validate_workload_declarations.sh
+        The status should be success
+        The output should satisfy pass_message_count_is $(( 3 * 4 ))
+    End
 End
