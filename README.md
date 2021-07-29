@@ -60,6 +60,14 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Bourne Shell builtins, `exit`](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
 
 
+### Writing output
+
+* [Stack Overflow – Why use printf '%s\n' “message”?](https://stackoverflow.com/a/66439091)
+* [Unix & Linux Stack Exchange – Why is printf better than echo?](https://unix.stackexchange.com/a/65819)
+
+* [Bash reference manual – Bash builtin commands, `printf`](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
