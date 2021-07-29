@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 main() {
     CLUSTERS=`find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases'`
