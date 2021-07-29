@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 main() {
-    CLUSTERS=`find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases'`
+    CLUSTERS=`find ./clusters -type d -mindepth 2 -maxdepth 2 -not -name 'bases'` \
+        || exit_with_message 'Error during search for cluster folders.'
     echo ${CLUSTERS}
 
     for cluster in ${CLUSTERS}; do
@@ -36,6 +37,14 @@ main() {
         fi
         echo -e "\e[32;1m✔️PASS\e[0m - no unpatched places found."
     done
+}
+
+exit_with_message() {
+    local exit_status="$?"
+    local message="$1"
+
+    printf '%s\n' "$message" 'Aborting execution.'
+    exit "$exit_status"
 }
 
 run_in_container() {

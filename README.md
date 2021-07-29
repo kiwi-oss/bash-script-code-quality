@@ -51,6 +51,15 @@ another, so tests could be run at the various stages.
 * [References](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/docs/references.md)
 
 
+### Error handling
+
+* [Stack Overflow – How to exit if a command failed?](https://stackoverflow.com/q/3822621)
+* [Bash FAQ – Why doesn't set -e (or set -o errexit, or trap ERR) do what I expected?](https://mywiki.wooledge.org/BashFAQ/105)
+
+* [Bash reference manual – Special parameters, `?`](https://www.gnu.org/software/bash/manual/html_node/Special-Parameters.html)
+* [Bash reference manual – Bourne Shell builtins, `exit`](https://www.gnu.org/software/bash/manual/html_node/Bourne-Shell-Builtins.html)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
