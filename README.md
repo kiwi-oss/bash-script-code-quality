@@ -41,6 +41,7 @@ another, so tests could be run at the various stages.
 ### Initialise and run ShellSpec
 
 * [ShellSpec – Project directory](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#project-directory)
+* [ShellSpec – runs specfile using `/bin/sh` by default](https://github.com/shellspec/shellspec/blob/b2621f7e3f63a5a683a8994bbc916dc794f2dfb8/README.md#runs-specfile-using-binsh-by-default)
 
 
 [ALE]:
