@@ -1,3 +1,5 @@
+#shellcheck shell=bash
+
 Describe 'Workload declarations validation'
 
     It 'outputs success messages for all steps when they pass'

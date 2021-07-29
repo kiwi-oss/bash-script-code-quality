@@ -68,6 +68,11 @@ another, so tests could be run at the various stages.
 * [Bash reference manual – Bash builtin commands, `printf`](https://www.gnu.org/software/bash/manual/html_node/Bash-Builtins.html)
 
 
+### ShellCheck shell declaration
+
+* [ShellCheck wiki – Directive, `shell`](https://github.com/koalaman/shellcheck/wiki/Directive#shell)
+
+
 [ALE]:
 https://github.com/dense-analysis/ale
 
